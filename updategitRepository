@@ -1,0 +1,16 @@
+##################### FIRST LINE
+# ---------------------------
+#!/bin/bash
+# ---------------------------
+#
+# ShadowNET's Seedbox
+#   By TheSyndicate ---> https://github.com/The-Syndicate/
+#
+#
+                        
+cd /etc/seedbox-from-scratch/
+sudo git stash
+sudo git pull
+sudo bash /etc/seedbox-from-scratch/updateExecutables
+
+##################### LAST LINE ###########

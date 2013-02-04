@@ -1,0 +1,12 @@
+##################### FIRST LINE
+# ---------------------------
+#!/bin/bash
+# ---------------------------
+#
+# ShadowNET's Seedbox
+#   By TheSyndicate ---> https://github.com/The-Syndicate/
+#
+#
+#
+
+sudo apt-get --yes purge webmin

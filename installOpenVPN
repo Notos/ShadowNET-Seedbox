@@ -1,0 +1,16 @@
+##################### FIRST LINE
+# ---------------------------
+#!/bin/bash
+# ---------------------------
+#
+# ShadowNET's Seedbox
+#   By TheSyndicate ---> https://github.com/The-Syndicate/
+#
+#
+# OpenVPN in beta --- Tested on Ubuntu 12.04 64Bit
+  sudo bash /etc/seedbox-from-scratch/ovpni
+#
+#
+#
+#
+#  This is just to run correctly the right script

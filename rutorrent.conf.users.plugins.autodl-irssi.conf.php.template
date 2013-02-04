@@ -1,0 +1,13 @@
+<?php
+
+/// ---------------------------------------------------------
+///
+///  ShadowNET's Seedbox
+///     By TheSyndicate ---> https://github.com/The-Syndicate/
+///
+/// ---------------------------------------------------------
+
+$autodlPort = <PORT>;
+$autodlPassword = "<PASSWORD>";
+
+?>

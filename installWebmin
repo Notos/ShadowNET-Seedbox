@@ -1,0 +1,18 @@
+##################### FIRST LINE
+# ---------------------------
+#!/bin/bash
+# ---------------------------
+#
+# ShadowNET's Seedbox
+#   By TheSyndicate ---> https://github.com/The-Syndicate/
+#
+#
+#
+
+cd /tmp
+sudo wget -t 5 http://www.webmin.com/jcameron-key.asc
+sudo apt-key add jcameron-key.asc
+echo "" | sudo tee -a /etc/apt/sources.list > /dev/null
+echo "deb http://download.webmin.com/download/repository sarge contrib" | sudo tee -a /etc/apt/sources.list > /dev/null
+sudo apt-get update
+sudo apt-get --yes install webmin

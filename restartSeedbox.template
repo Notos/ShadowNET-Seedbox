@@ -1,0 +1,47 @@
+##################### FIRST LINE
+# ---------------------------
+#!/bin/bash
+# ---------------------------
+#
+# ShadowNET's Seedbox
+#   By TheSyndicate ---> https://github.com/The-Syndicate/
+#
+#
+#
+
+export HOME=<homedir>
+
+echo "Killing all related processes..."
+kill `screen -ls | grep tached | awk '{print $1}' | cut -d. -f 1` &> /dev/null
+sleep 1
+kill -9 `screen -ls | grep tached | awk '{print $1}' | cut -d. -f 1` &> /dev/null
+sleep 1
+kill `ps aux | grep <username> | grep SABnzbd | grep -v grep | awk '{print $2}' | cut -d. -f 1` &> /dev/null
+sleep 1
+kill -9 `ps aux | grep <username> | grep SABnzbd | grep -v grep | awk '{print $2}' | cut -d. -f 1` &> /dev/null
+sleep 1
+kill -9 `ps aux | grep <username> | grep deluge | grep -v grep | awk '{print $2}' | cut -d. -f 1` &> /dev/null
+
+echo "Wiping screen..."
+screen -wipe
+
+sleep 3
+echo "Starting rTorrent..."
+screen -d -m -S rtorrent rtorrent
+
+sleep 3
+echo "Starting IRSSI..."
+screen -d -m -S irssi irssi
+
+if [[ -a /etc/seedbox-from-scratch/sabnzbd/SABnzbd.py ]]; then
+  sleep 3
+  echo "Starting sabnzbdplus..."
+  /etc/seedbox-from-scratch/sabnzbd/SABnzbd.py --server 0.0.0.0:<http_port> --daemon --config-file=<homedir>/.sabnzbd/sabnzbd.ini --logging 2 --https <https_port>
+fi
+
+if [[ -a $HOME/.config/deluge/web.conf ]]; then
+  sleep 3
+  echo "Starting Deluge..."
+  deluged
+  screen -d -m -S deluge-web deluge-web
+fi

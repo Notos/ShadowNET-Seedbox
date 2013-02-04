@@ -1,0 +1,48 @@
+#
+# ShadowNET's Seedbox
+#   By TheSyndicate ---> https://github.com/The-Syndicate/
+#
+#
+
+max_uploads = 100
+min_peers = 75
+max_peers = 100 
+min_peers_seed = -1 
+max_peers_seed = -1 
+trackers.numwant.set = -1
+check_hash = no
+directory = /home/<username>/private/rtorrent/data
+session = /home/<username>/private/rtorrent/.session
+port_range = 99888-99888 
+port_random = yes
+upload_rate = 0 
+download_rate = 0 
+pieces.memory.max.set = 3500M 
+network.max_open_files.set = 256 
+network.http.max_open.set = 32
+dht = disable 
+peer_exchange = no 
+schedule = watch_directory,5,5,load_start=/home/<username>/private/rtorrent/watch/*.torrent
+schedule = untied_directory,5,5,stop_untied= 
+schedule = low_diskspace,5,60,close_low_diskspace=100M 
+scgi_port = 127.0.0.1:5995 
+encryption = allow_incoming,enable_retry,prefer_plaintext 
+system.file.max_size.set = -1 
+pieces.preload.type.set = 1 
+pieces.preload.min_size.set = 262144
+pieces.preload.min_rate.set = 5120
+network.send_buffer.size.set = 0
+network.receive_buffer.size.set = 0
+pieces.sync.always_safe.set = no
+pieces.sync.timeout.set = 600
+pieces.sync.timeout_safe.set = 900
+session.name.set =
+session.use_lock.set = yes
+session.on_completion.set = yes
+system.file.split_size.set = -1
+system.file.split_suffix.set = .part
+# use_udp_trackers = yes
+trackers.use_udp.set = yes
+use_udp_trackers = yes
+
+

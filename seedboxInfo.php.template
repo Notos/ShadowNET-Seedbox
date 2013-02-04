@@ -1,0 +1,51 @@
+<htm>
+<body>
+<font face="arial">
+<h1>ShadowNET's Seedbox v<?php echo getScriptVersion(); ?></h1>
+<h2>User list</h2>
+<?php
+  error_reporting(E_ALL);
+
+  $dir = '/etc/seedbox-from-scratch/users/';
+  $files = scandir($dir);
+
+  foreach($files as $index=>$file) {
+    $data = explode(".", $file);
+    if ($data[1] == 'info') {
+        printUser($dir,$data[0]);
+    }
+  }
+
+  function printUser($dir,$user) {
+    echo "<h3>$user</h3>";
+    $data = file($dir."$user.info");
+    foreach($data as $index=>$line) {
+      $line = makelink($line);
+      echo $line;
+    }
+  }
+
+  function makelink($input) {
+    $parse = explode(' ', $input);
+    $input = "";
+    foreach ($parse as $token) {
+      $br = "<br>";
+      if (strpos($token, "://") > 0) {
+        $input .= '<a href="' . $token . '">' . $token . '</a> ';
+      } else if(substr($token, 1, 3) == '---') {
+        $input .= "<hr>";
+        $br = "";
+      } else {
+        $input .= $token." ";
+      }
+    }
+    return trim($input.$br);
+  }
+
+  function getScriptVersion() {
+    $data = file("/etc/seedbox-from-scratch/version.info");
+    return $data[0];
+  }
+?>
+</body>
+</htm>
